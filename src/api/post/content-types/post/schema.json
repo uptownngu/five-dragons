@@ -1,0 +1,116 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
+    },
+    "dislikes": {
+      "type": "integer",
+      "default": 0
+    },
+    "isPinned": {
+      "type": "boolean",
+      "default": false
+    },
+    "isNotice": {
+      "type": "boolean",
+      "default": false
+    },
+    "board": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::board.board",
+      "inversedBy": "posts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment"
+    },
+    "votes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vote.vote"
+    },
+    "poststatus": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "string"
+    },
+    "site": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "condition": {
+      "type": "string"
+    },
+    "importance": {
+      "type": "enumeration",
+      "enum": [
+        "normal",
+        "important",
+        "event"
+      ]
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "comment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    },
+    "uservotes": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vote.vote",
+      "inversedBy": "post"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "posts"
+    }
+  }
+}

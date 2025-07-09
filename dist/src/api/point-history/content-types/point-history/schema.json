@@ -1,0 +1,42 @@
+{
+    "kind": "collectionType",
+    "collectionName": "point_histories",
+    "info": {
+        "singularName": "point-history",
+        "pluralName": "point-histories",
+        "displayName": "PointHistory"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "amount": {
+            "type": "integer",
+            "required": true
+        },
+        "type": {
+            "type": "enumeration",
+            "required": true,
+            "enum": [
+                "post",
+                "comment",
+                "attendance",
+                "admin",
+                "levelup"
+            ]
+        },
+        "description": {
+            "type": "string"
+        },
+        "balance": {
+            "type": "integer"
+        },
+        "user": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "point_histories"
+        }
+    }
+}

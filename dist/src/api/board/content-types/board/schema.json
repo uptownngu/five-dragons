@@ -1,0 +1,56 @@
+{
+    "kind": "collectionType",
+    "collectionName": "boards",
+    "info": {
+        "singularName": "board",
+        "pluralName": "boards",
+        "displayName": "Board"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "displayName": {
+            "type": "string"
+        },
+        "isActive": {
+            "type": "boolean",
+            "default": true
+        },
+        "posts": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::post.post",
+            "mappedBy": "board"
+        },
+        "slug": {
+            "type": "string",
+            "required": true,
+            "unique": true
+        },
+        "description": {
+            "type": "string"
+        },
+        "boardtype": {
+            "type": "enumeration",
+            "enum": [
+                "verify",
+                "onca",
+                "offca",
+                "entertainment",
+                "freeboard",
+                "notice",
+                "generalPromo",
+                "freeMoney",
+                "blacklist",
+                "guarantee"
+            ]
+        }
+    }
+}
